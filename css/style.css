@@ -3,3 +3,25 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+
+/* Colore bg */
+.bg-acqua{
+    background-color: rgb(127, 255, 212);
+}
+
+.bg-click{
+    background-color: rgb(0, 255, 255)
+}
+
+
+.contenitore-main{
+    width: 1000px;
+    height: 1000px;
+}
+
+.quadrato{
+    width: 100px;
+    height: 100px;
+    border: solid 1px black;
+}
