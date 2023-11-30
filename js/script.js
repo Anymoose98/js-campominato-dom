@@ -18,18 +18,25 @@ function creazioneQuadrato(num){
 return quadrato;
 }
 
+// Funzione creazione bomba
 function creazioneBomba(num){
     const quadrato = document.createElement("div");
     quadrato.classList.add("quadrato");
+    quadrato.classList.add("bomba");
+
     quadrato.addEventListener("click",function(){
         if(!gameover){
         this.classList.toggle("bg-bomba")
         console.log("casella n." + num)
         punteggio.textContent = ("Hai preso una bomba! il tuo punteggio è di: " + punti);
         punti = 1
-        gameover = true
+        gameover = true       
+        let tutte_bombe = document.querySelectorAll(".bomba");
+            for (let i = 0; i < tutte_bombe.length; i++)
+            tutte_bombe[i].classList.add("bg-bomba");
+        }
 
-}})
+})
     return quadrato;
 }
 
@@ -74,6 +81,9 @@ bottone.addEventListener("click",function(){
             contenitore_quadrati.appendChild(quadrato)
         }
     }
+
+    
+    
 })
 
 
