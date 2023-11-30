@@ -7,11 +7,13 @@ function creazioneQuadrato(num){
     quadrato.classList.add("quadrato");
 
     quadrato.addEventListener("click",function(){
-    this.classList.toggle("bg-click")
-    console.log("casella n." + num)
-    const punteggio = document.getElementById("punteggio");
-    punteggio.textContent = ("Punti: " + punti);
-    punti++
+        if(!gameover){
+            this.classList.toggle("bg-click")
+            console.log("casella n." + num)
+            const punteggio = document.getElementById("punteggio");
+            punteggio.textContent = ("Punti: " + punti);
+            punti++
+        }
 })
 return quadrato;
 }
@@ -20,10 +22,14 @@ function creazioneBomba(num){
     const quadrato = document.createElement("div");
     quadrato.classList.add("quadrato");
     quadrato.addEventListener("click",function(){
+        if(!gameover){
         this.classList.toggle("bg-bomba")
         console.log("casella n." + num)
+        punteggio.textContent = ("Hai preso una bomba! il tuo punteggio è di: " + punti);
         punti = 1
-    })
+        gameover = true
+
+}})
     return quadrato;
 }
 
@@ -47,7 +53,7 @@ const contenitore_quadrati = document.getElementById("contenitore")
 // Bottone
 const bottone = document.querySelector("button")
 bottone.addEventListener("click",function(){
-    
+    gameover = false
     punti = 1
     
     // Ripulire il codice
