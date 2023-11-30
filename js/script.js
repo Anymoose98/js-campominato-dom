@@ -1,10 +1,28 @@
+let punti = 1
+
 // Funzione Quadrato
-function creazionequadrato(num){
+function creazioneQuadrato(num){
+    
+    const quadrato = document.createElement("div");
+    quadrato.classList.add("quadrato");
+
+    quadrato.addEventListener("click",function(){
+    this.classList.toggle("bg-click")
+    console.log("casella n." + num)
+    const punteggio = document.getElementById("punteggio");
+    punteggio.textContent = ("Punti: " + punti);
+    punti++
+})
+return quadrato;
+}
+
+function creazioneBomba(num){
     const quadrato = document.createElement("div");
     quadrato.classList.add("quadrato");
     quadrato.addEventListener("click",function(){
-        this.classList.toggle("bg-click")
+        this.classList.toggle("bg-bomba")
         console.log("casella n." + num)
+        punti = 1
     })
     return quadrato;
 }
@@ -21,8 +39,7 @@ function numeriCasualiUnici(){
     return numeri_casuali_unici
 }
 
-let bombe = numeriCasualiUnici()
-console.log(bombe)
+
 
 // Assegno il contenitore dei quadrati
 const contenitore_quadrati = document.getElementById("contenitore")
@@ -31,12 +48,26 @@ const contenitore_quadrati = document.getElementById("contenitore")
 const bottone = document.querySelector("button")
 bottone.addEventListener("click",function(){
     
+    punti = 1
+    
     // Ripulire il codice
     contenitore_quadrati.innerHTML = "";
-
+    
+    // Creazione numeri casuali unici
+    let Nbombe = numeriCasualiUnici()
+    console.log(Nbombe)
+    
     // Creo i quadrati
-    for(let i = 0; i < 100; i++){
-        let quadrato = creazionequadrato(i + 1);
-        contenitore_quadrati.appendChild(quadrato)
+    for(let i = 1; i <= 100; i++){
+        if(Nbombe.includes(i)){
+            let bomba = creazioneBomba(i)
+            contenitore_quadrati.appendChild(bomba)
+        }
+        else{
+            let quadrato = creazioneQuadrato(i);
+            contenitore_quadrati.appendChild(quadrato)
+        }
     }
 })
+
+
