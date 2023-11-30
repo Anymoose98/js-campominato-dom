@@ -9,6 +9,21 @@ function creazionequadrato(num){
     return quadrato;
 }
 
+// Funzione creazione di 16 numeri non uguali e array
+function numeriCasualiUnici(){
+    let numeri_casuali_unici = []
+    for(let i = 0; numeri_casuali_unici.length <= 15;i++ ){
+        let numero_unico = Math.floor(Math.random() * 100 + 1);
+        if(!numeri_casuali_unici.includes(numero_unico)){
+            numeri_casuali_unici.push(numero_unico);
+        }
+    }
+    return numeri_casuali_unici
+}
+
+let bombe = numeriCasualiUnici()
+console.log(bombe)
+
 // Assegno il contenitore dei quadrati
 const contenitore_quadrati = document.getElementById("contenitore")
 
